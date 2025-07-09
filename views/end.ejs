@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Game Over</title>
+</head>
+<body class="bg-zinc-900 text-white min-h-screen flex flex-col items-center justify-center gap-6 p-4">
+
+  <h1 class="text-4xl font-bold">
+    <%= result === "draw" ? "🤝 Game Drawn" : result === player ? "🎉 You Win!" : "❌ You Lose" %>
+  </h1>
+
+  <p class="text-xl">Reason: <%= reason %></p>
+
+  <a href="/" class="bg-green-600 hover:bg-green-700 px-6 py-2 rounded text-white text-lg">
+    🔁 Play Again
+  </a>
+
+</body>
+</html>

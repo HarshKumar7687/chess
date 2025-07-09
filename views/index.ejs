@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Chess Game</title>
+
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    .chessboard {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      width: min(90vmin, 90vw); /* shrink as screen gets smaller */
+      aspect-ratio: 1 / 1;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+
+    .square {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .square.light {
+      background-color: #f0d9b5;
+    }
+
+    .square.dark {
+      background-color: #b58863;
+    }
+
+    .piece {
+      font-size: min(calc(90vmin / 8 * 0.8), 11vmin);
+      line-height: 1;
+      cursor: grab;
+      font-family: 'Segoe UI Symbol', 'Noto Emoji', 'Arial Unicode MS', sans-serif;
+      user-select: none;
+    }
+
+    .piece.white {
+      color: white;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
+    }
+
+    .piece.black {
+      color: black;
+      text-shadow: 0 0 1px white;
+    }
+
+    .dragging {
+      opacity: 0.5;
+    }
+
+    .square.highlight {
+      outline: 3px solid green;
+    }
+
+    #turnDisplay {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: white;
+      text-align: center;
+    }
+
+    #whiteTimer,
+    #blackTimer {
+      white-space: nowrap;
+      text-align: center;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    }
+
+    @media (max-width: 500px) {
+      .piece {
+        font-size: min(calc(100vmin / 8 * 0.75), 10vmin);
+      }
+    }
+  </style>
+</head>
+<body class="bg-zinc-900 text-white">
+  <div class="min-h-screen flex flex-col items-center justify-center gap-4 p-4">
+
+    <!-- Status -->
+    <div id="status" class="text-2xl text-center">
+      ⌛ Searching for opponent...
+    </div>
+
+    <!-- Turn Display -->
+    <div id="turnDisplay" class="hidden text-xl text-center"></div>
+
+    <!-- Timers -->
+    <div class="flex justify-between w-full max-w-sm px-4">
+      <div id="whiteTimer">White: 05:00</div>
+      <div id="blackTimer">Black: 05:00</div>
+    </div>
+
+    <!-- Chessboard -->
+    <div class="chessboard hidden"></div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="/javascripts/chessGame.js"></script>
+</body>
+</html>
