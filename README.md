@@ -94,3 +94,4 @@ Initial Rendering:
 
 
 This is a multiplayer chess game hosted on render.
+Its chooses player randomly.
