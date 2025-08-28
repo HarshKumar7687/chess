@@ -1,3 +1,4 @@
+#Chess
 
 Socket.io Initialization:
 - Establish WebSocket connection to the server using Socket.io (const socket = io();).
@@ -92,3 +93,4 @@ Initial Rendering:
 
 
 
+This is a multiplayer chess game hosted on render.
